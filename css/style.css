@@ -1,0 +1,569 @@
+.logo-loan img {
+    max-width: 272px;
+    padding: 5px;
+    margin-left: 8px;
+    border-radius: unset;
+}
+
+.box .form-horizontal .form-group {
+    margin-bottom: 9px;
+}
+
+.anchor_upper {
+    display: none !important;
+}
+
+.youtube-video .col-md-12 {
+    padding: 0;
+}
+
+.highcharts-container {
+    margin: 0 auto;
+}
+
+.labe-radius {
+    float: right;
+    width: 10px;
+    height: 10px;
+    margin-left: 10px;
+    margin-top: 7px;
+    border-radius: 50%;
+}
+
+.labeling p:nth-child(odd) {
+    display: inline-block;
+    font-size: 110%;
+    margin-bottom: 3px;
+    font-weight: bold;
+}
+
+.labeling p:nth-child(even) {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.navbar {
+    border-radius: 0;
+}
+
+.chart {
+    width: 40%;
+    float: right;
+}
+
+.titleOfText {
+    font-weight: bold;
+}
+
+.labeling {
+    float: left;
+    width: 60%;
+    background: #EBEDEC;
+    padding: 15px 0px 0px 15px;
+    height: 250px;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.navbar-nav > li > a {
+    padding-top: 34px;
+    padding-bottom: 0px;
+}
+
+.navbar-nav > li > a:last-child {
+    margin-right: 10px;
+}
+
+.wrapper-home {
+    margin-top: 20px;
+    float: left;
+}
+
+.content,
+.box-body {
+    float: left;
+    width: 100%;
+}
+
+.box-body {
+    padding: 15px 15px;
+    background-color: #E3E3E3;
+}
+
+table#illustrate {
+    text-align: center;
+}
+
+.img-adword {
+    padding: 0;
+}
+
+.img-adword img {
+    max-width: 100%;
+    max-height: 200px;
+}
+
+.content > .row {
+    margin: 0;
+}
+
+.navbar-header h2 {
+    /*  color: #F2CB45;*/
+    font-family: -webkit-body;
+    float: left;
+}
+
+.header-container .navbar {
+    margin-bottom: 0;
+}
+
+.click-container a {
+    border-radius: 0px 11px 14px 0;
+    padding: 4px 28px;
+    /* background-color: #B2B4B3;
+    color: #fff;*/
+    position: relative;
+    margin-right: 35px;
+    text-transform: capitalize;
+}
+
+.click-container a:nth-child(4) {
+    margin-right: 0 !important;
+}
+
+.click-container a:before {
+    content: '';
+    left: -11px;
+    top: -5px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.elephant-container {
+    float: left;
+    width: 100%;
+}
+
+.input-styling .input-group .form-control:first-child {
+    -webkit-border-radius: 10px 0px 0px 10px !important;
+}
+
+.input-styling .input-group .input-group-addon {
+    border-radius: 0px 11px 11px 0px;
+}
+
+.embed-responsive-item {
+    max-width: 100%;
+}
+
+.loan-bazar-text {
+    text-align: center;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.loan-bazar-text h4:first-child {
+    margin-top: 10px;
+    color: #D89850;
+}
+
+.loan-bazar-text h4 {
+    padding: 9px 0;
+    background-color: #E3E3E3;
+    margin-bottom: 2px !important;
+    margin-top: 5px;
+    width: 98%;
+    font-weight: bold;
+}
+
+.margin-spacing {
+    margin-left: 1%;
+}
+
+.box .alert {
+    margin-bottom: 10px;
+}
+
+/* Branding color as per page end */
+
+.anchor_tag {
+    background-color: #B2B4B3;
+    color: #fff;
+}
+
+.anchor_tag:before {
+    background-color: #B2B4B3;
+    box-shadow: 0px 0px 0px 1px #fff inset;
+}
+.active{
+    background-color: #F2CB45;
+}
+
+
+/*--------------------------- home-------------------- ------*/
+
+.click-container a#home:active,
+.click-container a#home:active:before,
+.click-container a#home:focus,
+.click-container a#home:focus:before {
+    background-color: #FF8500;
+    color:#fff;
+    box-shadow: 0px 0px 0px 1px #fff inset;
+}
+.homeactive,.homeactive::before{
+    background-color: #FF8500 !important;
+    color:#fff;
+    box-shadow: 0px 0px 0px 1px #fff inset;
+}
+.click-container a#home:hover,
+.click-container a#home:hover:before {
+    background-color: #FF8500;
+    color:#fff;
+    box-shadow: 0px 0px 0px 1px #fff inset;
+}
+
+.home-con.labeling p:nth-child(2) {
+    color: #f39c12;
+}
+
+.home-con .home-label-upper {
+    background-color: #FFEB1F;
+}
+
+.home-con .home-label-lower {
+    background-color: #FF8500;
+}
+
+/*----------------- personal --------------------*/
+
+.click-container a#personal:active,
+.click-container a#personal:active:before,
+.click-container a#personal:focus,
+.click-container a#personal:focus:before {
+    background-color: #62B42E;
+    color:#fff;
+    box-shadow: 0px 0px 0px 1px #fff inset;
+}
+.personalactive,.personalactive::before{
+    background-color: #62B42E !important;
+    color:#fff;
+    box-shadow: 0px 0px 0px 1px #fff inset;
+}
+
+.click-container a#personal:hover,
+.click-container a#personal:hover:before {
+    background-color: #62B42E;
+    color:#fff;
+    box-shadow: 0px 0px 0px 1px #fff inset;
+}
+
+.personal-label.labeling p:nth-child(2) {
+    color: #62b22d;
+}
+
+.personal-label .home-label-upper {
+    background-color: #FFEB1F;
+}
+
+.personal-label .home-label-lower {
+    background-color: #58FF01;
+}
+
+/*----------------- car --------------------*/
+
+.click-container a#car:active,
+.click-container a#car:active:before,
+.click-container a#car:focus,
+.click-container a#car:focus:before {
+    background-color: #06BDCB;
+    color:#fff;
+    box-shadow: 0px 0px 0px 1px #fff inset;
+}
+.caractive,.caractive::before{
+    background-color: #06BDCB !important;
+    color:#fff; 
+    box-shadow: 0px 0px 0px 1px #fff inset;
+}
+
+.click-container a#car:hover,
+.click-container a#car:hover:before {
+    background-color: #06BDCB;
+    color:#fff;
+    box-shadow: 0px 0px 0px 1px #fff inset;
+}
+
+.car-label.labeling p:nth-child(2) {
+    color: #06BDCB;
+}
+
+.car-label .home-label-upper {
+    background-color: #FFEB1F;
+}
+
+.car-label .home-label-lower {
+    background-color: #06BDCB;
+}
+/*------------------ commercial branding color -----------*/  
+.click-container a#commercial:active,
+.click-container a#commercial:active:before,
+.click-container a#commercial:focus,
+.click-container a#commercial:focus:before {
+    background-color: #06BDCB;
+    color:#fff;
+    box-shadow: 0px 0px 0px 1px #fff inset;
+}
+.commercialactive,.commercialactive::before{
+    background-color: #06BDCB !important;
+    color:#fff; 
+    box-shadow: 0px 0px 0px 1px #fff inset;
+}
+
+.click-container a#commercial:hover,
+.click-container a#commercial:hover:before {
+    background-color: #06BDCB;
+    color:#fff;
+    box-shadow: 0px 0px 0px 1px #fff inset;
+}
+
+.commercial-label.labeling p:nth-child(2) {
+    color: #06BDCB;
+}
+
+.commercial-label .home-label-upper {
+    background-color: #FFEB1F;
+}
+
+.commercial-label .home-label-lower {
+    background-color: #06BDCB;
+}
+
+
+/*------------------ commercial end here -----------*/ 
+
+.navbar-header h2 {
+    color: #F2CB45;
+}
+
+.elephant-container img {
+    max-width: 100%;
+    width: 100%;
+}
+
+.input-styling .input-group .input-group-addon {
+    background-color: #B3B5B4;
+    color: #5F6160;
+}
+
+#container {
+    background-color: #EBEDEC;
+}
+
+rect.highcharts-background {
+    background-color: transparent;
+    fill: transparent;
+}
+
+.highcharts-container {
+    height: 280px;
+}
+
+#illustrate th {
+    background-color: #fff;
+    padding: 20px 15px;
+    text-align: center;
+}
+
+#illustrate .table-striped > tbody > tr:nth-child(odd) > td {
+    background-color: #EBEDEC;
+}
+
+.footer {
+    padding: 15px;
+    background-color: #0C0437;
+    float: left;
+    width: 100%;
+}
+
+
+/* Branding color as per page end here  */
+
+@media (min-width: 1200px) {
+    .container {
+        width: 1080px;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    aside.container.header-container {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 1048px) {
+    .click-container {
+        padding: 0;
+    }
+    .click-container a {
+        padding: 3px 25px;
+        margin-right: 22px;
+        font-size: 12px;
+    }
+    .click-container a:before {
+        left: -6px;
+        top: -4px;
+        width: 28px;
+        height: 28px;
+    }
+    .youtube-video {
+        padding-right: 0;
+    }
+
+}
+
+@media only screen and (max-width: 990px) {
+    .wrapper-home .control-label {
+        text-align: left;
+        padding-bottom: 5px;
+    }
+    .img-adword img {
+        height: auto;
+    }
+    .youtube-video {
+        float: left;
+        width: 100%;
+        padding-left: 0;
+        margin-bottom: 15px;
+    }
+    .youtube-video .common-width {
+        width: 33.33%;
+        float: left;
+        padding-right: 15px;
+    }
+    .loan-bazar-text h4:first-child {
+        margin-top: 0;
+    }
+    .labeling {
+        width: 45%;
+    }
+    .chart {
+        width: 55%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .loan-text {
+        width: 60%;
+    }
+    aside.container.header-container {
+        width: 100%;
+        padding: 0;
+    }
+    .skin-black .navbar .nav > li > a:hover,
+    .skin-black .navbar .nav > li > a:active,
+    .skin-black .navbar .nav > li > a:focus {
+        background-color: #F2CB45 !important;
+        color: #fff;
+    }
+    .header-container .navbar-inverse .navbar-nav>.active>a{
+        background-color: #F2CB45 !important;
+        color: #fff;
+    }
+    #myNavbar ul.nav,
+    .navbar .navbar-nav > li {
+        float: left;
+        width: 100%;
+    }
+    .header-container .navbar-collapse {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .header-container .navbar-nav > li > a {
+        padding: 10px;
+        margin: 0;
+    }
+    .youtube-video .loan-bazar-text {
+        padding-right: 0;
+    }
+    .anchor_upper {
+        display: block !important;
+    }
+    .dummy{
+        display:none !important;
+    }
+    .anchor_tag {
+        display: none;
+    }
+    .wrapper-home,
+    .box {
+        margin-top: 0;
+    }
+}
+
+@media only screen and (max-width: 575px) {
+    .youtube-video .loan-bazar-text {
+        width: 100% !important;
+        margin-top: 10px;
+        padding-right: 0;
+    }
+    .youtube-video .loan-bazar-text h4 {
+        width: 100%;
+    }
+    .youtube-video .common-width {
+        width: 50%;
+        max-height: 164px;
+        overflow-y: hidden;
+    }
+    .youtube-video .img-adword {
+        padding-right: 0;
+    }
+    .labeling p:nth-child(even) {
+        font-size: 16px;
+    }
+
+}
+
+@media only screen and (max-width: 460px) {
+    .click-container a:before {
+        left: -16px;
+        top: -4px;
+        width: 25px;
+        height: 25px;
+    }
+    .click-container a {
+        padding: 2px 15px;
+        margin-right: 9%;
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    .logo-loan img {
+        max-width: 222px;
+    }
+    .labeling {
+        width: 100%;
+        text-align: center;
+    }
+    .chart {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .labeling p {
+        font-size: 100% !important;
+    }
+    .youtube-video .common-width{
+        width: 100%;
+        padding-right: 0;
+        max-height: unset;
+    }
+    .embed-responsive-item {
+        max-width: 100%;
+        width: 100%;
+    }
+    .img-adword img {
+        width: 100%;
+        height :150px;
+    }
+}
