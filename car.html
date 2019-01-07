@@ -196,7 +196,7 @@
                         <div class="col-md-8 col-xs-12  click-container">
                             <a href="index.html" id="home" class="anchor_tag">Home Loan</a>
                             <a href="personal.html" id="personal" class="anchor_tag">Personal Loan</a>
-                            <a href="car.html" id="car" class="anchor_tag">Car Loan</a>
+                            <a href="#" id="car" class="anchor_tag">Car Loan</a>
                             <a href="commercial.html" id="commercial" class="anchor_tag">Commercial Loan</a>
                             <div class="box">
 
@@ -270,7 +270,7 @@
                             <div class="common-width">
                                 <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/PIh2xe4jnpk"></iframe>
                             </div>
-                            <div class="img-adword common-width img-thumbnail">
+                            <div class="img-adword common-width ">
                                 <img src="images/img_5terre.jpg" alt="demo">
                             </div>
                             <div class="loan-bazar-text common-width">
@@ -295,27 +295,26 @@
 </body>
 <!-- Bootstrap -->
 <script src="js/bootstrap.min.js" type="text/javascript"></script>
-<script src="js/navigation.js" type="text/javascript"></script>
 <script type="text/javascript">
-$(document).ready(function(){
-	let split1=$(location).attr('href').split("/").reverse()[0];
-	let split2=split1.split("#")[0];
-	switch(split2){
-	case "index.html":
-	 $("#home").addClass("homeactive");
-	break;
-		case "personal.html":
-	 $("#personal").addClass("personalactive");
-	break;
-		case "car.html":
-	 $("#car").addClass("personalactive");
-	break;
-		case "commercial.html":
-	 $("#commercial").addClass("commercialctive");
-	break;
-	}
-         
-})
-</script>
+    $(document).ready(function(){
+        let split1=$(location).attr('href').split("/").reverse()[0];
+        let split2=split1.split("#")[0];
+        switch(split2){
+        case "index.html":
+         $("#home").addClass("homeactive");
+        break;
+        case "personal.html":
+         $("#personal").addClass("personalactive");
+        break;
+        case "car.html":
+         $("#car").addClass("caractive");
+        break;
+        case "commercial.html":
+         $("#commercial").addClass("commercialactive");
+        break;
+        }
+             
+    })
+    </script>
 
 </html>

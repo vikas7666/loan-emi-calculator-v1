@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-
 <head>
     <meta charset="UTF-8">
     <title>EMI Calculator</title>
@@ -30,19 +29,19 @@
         <script src="js/simple-slider.js"></script>
         <link href="css/simple-slider.css" rel="stylesheet" type="text/css" />
         <script>
-            window.onload = function() {
+            window.onload = function () {
                 var featured = document.getElementById("featured");
                 if ("ontouchstart" in window) {
-                    var touchStart = function(evt) {
+                    var touchStart = function (evt) {
                         var startTime = (new Date()).getTime();
                         var startX = evt.changedTouches[0].pageX;
-                        var touchEnd = function(evt) {
+                        var touchEnd = function (evt) {
                             document.removeEventListener("touchend", touchEnd);
                             var diffX = evt.changedTouches[0].pageX - startX;
                             var elapsed = (new Date()).getTime() - startTime;
                             console.log("Swiped " + diffX + " pixels in " + elapsed + " milliseconds");
                             if (elapsed < 200 && Math.abs(diffX) > 50) {
-                                (diffX < 0) ? slideright(): slideleft();
+                                (diffX < 0) ? slideright() : slideleft();
                             }
                         }
                         document.addEventListener("touchend", touchEnd);
@@ -54,181 +53,271 @@
         </script>
 
         <script type="text/Javascript">
-            $(document).ready(function(){ $("#la").bind( "slider:changed", function (event, data) { $("#la_value").html(data.value.toFixed(2)); calculateEMI(); } ); $("#nm").bind( "slider:changed", function (event, data) { $("#nm_value").html(data.value.toFixed(2));
-            calculateEMI(); } ); $("#roi").bind( "slider:changed", function (event, data) { var roi_value = data.value.toFixed(0).toString().replace(/,/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ","); $("#roi_value").html(data.value.toFixed(2)); calculateEMI();
-            } ); function calculateEMI(){ var loanAmount = $("#la_value").html(); var numberOfMonths = $("#nm_value").html(); var rateOfInterest = $("#roi_value").html(); var monthlyInterestRatio = (rateOfInterest/100)/12; var top = Math.pow((1+monthlyInterestRatio),numberOfMonths);
-            var bottom = top -1; var sp = top / bottom; var emi = ((loanAmount * monthlyInterestRatio) * sp); var full = numberOfMonths * emi; var interest = full - loanAmount; var int_pge = (interest / full) * 100; $("#tbl_int_pge").html(int_pge.toFixed(2)+"
-            %"); //$("#tbl_loan_pge").html((100-int_pge.toFixed(2))+" %"); var emi_str = emi.toFixed(0).toString().replace(/,/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ","); var loanAmount_str = loanAmount.toString().replace(/,/g, "").replace(/\B(?=(\d{3})+(?!\d))/g,
-            ","); var full_str = full.toFixed(2).toString().replace(/,/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ","); var int_str = interest.toFixed(2).toString().replace(/,/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ","); var ls_string = $("#emi").html(emi_str);
-            $("#tbl_emi").html(emi_str); $("#tbl_la").html(loanAmount_str); $("#tbl_nm").html(numberOfMonths); $("#tbl_roi").html(rateOfInterest); $("#tbl_full").html(full_str); $("#tbl_int").html(int_str); var detailDesc = "
-            <thead>
-                <tr class='success'>
-                    <th>Payment No.</th>
-                    <th>Begining Balance</th>
-                    <th>EMI</th>
-                    <th>Principal</th>
-                    <th>Interest</th>
-                    <th>Ending Balance</th>
-            </thead>
-            <tbody>"; var bb=parseInt(loanAmount); var int_dd =0;var pre_dd=0;var end_dd=0; for (var j=1;j
-                <=numberOfMonths;j++){ int_dd=b b * ((rateOfInterest/100)/12); pre_dd=e mi.toFixed(2) - int_dd.toFixed(2); end_dd=b b - pre_dd.toFixed(2); detailDesc +="<tr><td>"
-                    +j+ "</td><td>"+bb.toFixed(0)+ "</td><td>"+emi.toFixed(0)+ "</td><td>"+pre_dd.toFixed(0)+ "</td><td>"+int_dd.toFixed(0)+ "</td><td>"+end_dd.toFixed(0)+ "</td></tr>"; bb=b b - pre_dd.toFixed(0); } detailDesc +="</tbody>" ; $(
-                    "#illustrate").html(detailDesc); $( '#container').highcharts({ colors:[ '#ff8500', '#feee1c'], chart: { plotBackgroundColor: null, plotBorderWidth: null, plotShadow: false, width:250, height:250, }, title: { text: 'EMI Calculator' }, tooltip: { //pointFormat:
-                    '{series.name}: <b>{point.value}%</b>' }, plotOptions: { pie: { allowPointSelect: false, cursor: 'pointer', dataLabels: { enabled: false, color: '#000000', connectorColor: '#000000', format: '<b>{point.name}</b>: {point.percentage:.1f} %', distance: 5 } } }, series: [{ type:
-                    'pie', name: 'Amount', data: [ [ 'Loan', eval(loanAmount)], [ 'Interest', eval(interest.toFixed(2))] ] }] }); } calculateEMI(); }); </script>
-                    <!--  HTML part goes here --!>
+		$(document).ready(function(){
+			$("#la").bind(
+				"slider:changed", function (event, data) {
+					
+					$("#la_value").html(data.value.toFixed(2)); 
+					calculateEMI();
+				}
+			);
+
+			$("#nm").bind(
+				"slider:changed", function (event, data) {		
+					
+					$("#nm_value").html(data.value.toFixed(2)); 
+					calculateEMI();
+				}
+			);
+			
+			$("#roi").bind(
+				"slider:changed", function (event, data) {				
+					var roi_value = data.value.toFixed(0).toString().replace(/,/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+					$("#roi_value").html(data.value.toFixed(2)); 
+					calculateEMI();
+				}
+			);
+			
+			function calculateEMI(){
+				var loanAmount = $("#la_value").html();
+				var numberOfMonths = $("#nm_value").html();
+				var rateOfInterest = $("#roi_value").html();
+				var monthlyInterestRatio = (rateOfInterest/100)/12;
+				
+				var top = Math.pow((1+monthlyInterestRatio),numberOfMonths);
+				var bottom = top -1;
+				var sp = top / bottom;
+				var emi = ((loanAmount * monthlyInterestRatio) * sp);
+				var full = numberOfMonths * emi;
+				var interest = full - loanAmount;
+				var int_pge =  (interest / full) * 100;
+				$("#tbl_int_pge").html(int_pge.toFixed(2)+" %");
+				//$("#tbl_loan_pge").html((100-int_pge.toFixed(2))+" %");
+				
+				var emi_str = emi.toFixed(0).toString().replace(/,/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+				var loanAmount_str = loanAmount.toString().replace(/,/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+				var full_str = full.toFixed(2).toString().replace(/,/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+				var int_str = interest.toFixed(2).toString().replace(/,/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+				
+				var ls_string = 
+				
+				$("#emi").html(emi_str);
+				$("#tbl_emi").html(emi_str);
+				$("#tbl_la").html(loanAmount_str);
+				$("#tbl_nm").html(numberOfMonths);
+				$("#tbl_roi").html(rateOfInterest);
+				$("#tbl_full").html(full_str);
+				$("#tbl_int").html(int_str);
+				var detailDesc = "<thead><tr class='success'><th>Payment No.</th><th>Begining Balance</th><th>EMI</th><th>Principal</th><th>Interest</th><th>Ending Balance</th></thead><tbody>";
+				var bb=parseInt(loanAmount);
+				var int_dd =0;var pre_dd=0;var end_dd=0;
+				for (var j=1;j<=numberOfMonths;j++){
+					int_dd = bb * ((rateOfInterest/100)/12);
+					pre_dd = emi.toFixed(2) - int_dd.toFixed(2);
+					end_dd = bb - pre_dd.toFixed(2);
+					detailDesc += "<tr><td>"+j+"</td><td>"+bb.toFixed(0)+"</td><td>"+emi.toFixed(0)+"</td><td>"+pre_dd.toFixed(0)+"</td><td>"+int_dd.toFixed(0)+"</td><td>"+end_dd.toFixed(0)+"</td></tr>";
+					bb = bb - pre_dd.toFixed(0);
+				}
+					detailDesc += "</tbody>";
+				$("#illustrate").html(detailDesc);
+				 $('#container').highcharts({
+						colors:['#ff8500', '#feee1c'],
+						chart: {
+							plotBackgroundColor: null,
+							plotBorderWidth: null,
+							plotShadow: false,
+							width:250,
+							height:250,
+						},
+						title: {
+							text: 'EMI Calculator'
+						},
+						tooltip: {
+							//pointFormat: '{series.name}: <b>{point.value}%</b>'
+						},
+						plotOptions: {
+							pie: {
+								allowPointSelect: false,
+								cursor: 'pointer',
+								dataLabels: {
+									enabled: false,
+									color: '#000000',
+									connectorColor: '#000000',
+									format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+									distance: 5
+									
+								}
+							}
+						},
+						series: [{
+							type: 'pie',
+							name: 'Amount',
+							data: [
+								['Loan',   eval(loanAmount)],
+								['Interest',       eval(interest.toFixed(2))]
+							]
+						}]
+					});			
+			
+			}
+			calculateEMI();
+
+		});
+			
+	</script>
+        <!--  HTML part goes here --!>
 <!-- Right side column. Contains the navbar and content of the page -->
-                    <aside class="container header-container">
-                        <!-- Content Header (Page header) -->
-                        <nav class="navbar navbar-inverse">
-                            <div class="navbar-header">
-                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <aside class="container header-container">
+            <!-- Content Header (Page header) -->
+            <nav class="navbar navbar-inverse">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                                <a href="#" class="logo-loan">
-                                    <img src="images/logo.png" alt="logo" class="img-circle" />
-                                </a>
-                            </div>
-                            <div class="collapse navbar-collapse" id="myNavbar">
-                                <ul class="nav navbar-nav navbar-right">
-                                    <li><a href="#" class="dummy">Home</a></li>
-                                    <li class="anchor_upper"><a href="#">Home</a></li>
-                                    <li class="anchor_upper"><a href="personal.html">Personal Loan</a></li>
-                                    <li class="anchor_upper"><a href="car.html">Car Loan</a></li>
-                                    <li class="anchor_upper"><a href="commercial.html">Commercial Loan</a></li>
-                                    <li><a href="#">Blog</a></li>
-                                </ul>
-                            </div>
-                        </nav>
-                        <div class="elephant-container">
-                            <img src="images/banner-1.jpg" alt="elephant logo" />
-                        </div>
-                        <!-- Main content -->
-                        <section class="content">
-                            <div class="row">
-                                <div class="col-md-12 col-xs-12 wrapper-home ">
-                                    <div class="col-md-8 col-xs-12  click-container">
-                                        <a href="index.html" id="home" class="anchor_tag">Home Loan</a>
-                                        <a href="personal.html" id="personal" class="anchor_tag">Personal Loan</a>
-                                        <a href="car.html" id="car" class="anchor_tag">Car Loan</a>
-                                        <a href="commercial.html" id="commercial" class="anchor_tag">Commercial Loan</a>
-                                        <div class="box">
-                                            <h4><span class="label label-primary">Loan Amount is <strong><span class='' id="la_value">260000</span></strong>
-                                                </span>
-                                            </h4>
-                                            <form class="form-horizontal input-styling">
-                                                <div class="form-group">
-                                                    <label class="control-label col-md-3 col-sm-12 col-xl-12" for="email">Commercial
+                    <a href="#" class="logo-loan">
+                        <img src="images/logo.png" alt="logo" class="img-circle" />
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#" class="dummy">Home</a></li>
+                        <li class="anchor_upper"><a href="#">Home</a></li>
+                        <li class="anchor_upper"><a href="personal.html">Personal Loan</a></li>
+                        <li class="anchor_upper"><a href="car.html">Car Loan</a></li>
+                        <li class="anchor_upper"><a href="commercial.html">Commercial Loan</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="elephant-container">
+                <img src="images/banner-1.jpg" alt="elephant logo" />
+            </div>
+            <!-- Main content -->
+            <section class="content">
+                <div class="row">
+                    <div class="col-md-12 col-xs-12 wrapper-home ">
+                        <div class="col-md-8 col-xs-12  click-container">
+                            <a href="#" id="home" class="anchor_tag">Home Loan</a>
+                            <a href="personal.html" id="personal" class="anchor_tag">Personal Loan</a>
+                            <a href="car.html" id="car" class="anchor_tag">Car Loan</a>
+                            <a href="#" id="commercial" class="anchor_tag">Commercial Loan</a>
+                            <div class="box">
+                                <h4><span class="label label-primary">Loan Amount is <strong><span class='' id="la_value">260000</span></strong>
+                                    </span>
+                                </h4>
+                                <form class="form-horizontal input-styling">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-12 col-xl-12" for="email">Commercial
                                             Loan Amount:</label>
-                                                    <div class="col-sm-6">
-                                                        <div class="input-group">
-                                                            <input type="number" class="form-control" />
-                                                            <span class="input-group-addon"><b>Rs</b></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                            <input type="text" data-slider="true" value="260000" data-slider-range="1000000,100000000" data-slider-step="1000000" data-slider-snap="true" id="la">
-                                            <h4><span class="label label-danger">No. of Month is <strong><span class='' id="nm_value">36</span>
-                                                </strong>
-                                                </span>
-                                            </h4>
-                                            <form class="form-horizontal input-styling">
-                                                <div class="form-group">
-                                                    <label class="control-label col-md-3 col-xl-12 col-sm-12" for="email">Interest
+                                        <div class="col-sm-6">
+                                            <div class="input-group">
+                                                <input type="number" class="form-control" />
+                                                <span class="input-group-addon"><b>Rs</b></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <input type="text" data-slider="true" value="260000" data-slider-range="1000000,100000000"
+                                    data-slider-step="1000000" data-slider-snap="true" id="la">
+                                <h4><span class="label label-danger">No. of Month is <strong><span class='' id="nm_value">36</span>
+                                        </strong>
+                                    </span>
+                                </h4>
+                                <form class="form-horizontal input-styling">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-xl-12 col-sm-12" for="email">Interest
                                             Rate:</label>
-                                                    <div class="col-sm-6">
-                                                        <div class="input-group">
-                                                            <input type="number" class="form-control" />
-                                                            <span class="input-group-addon"><b>%</b></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                            <input type="text" data-slider="true" value="36" data-slider-range="120,360" data-slider-step="1" data-slider-snap="true" id="nm">
-                                            <h4><span class="label label-warning">Rate of Interest [ROI] is <strong><span class=''
+                                        <div class="col-sm-6">
+                                            <div class="input-group">
+                                                <input type="number" class="form-control" />
+                                                <span class="input-group-addon"><b>%</b></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <input type="text" data-slider="true" value="36" data-slider-range="120,360"
+                                    data-slider-step="1" data-slider-snap="true" id="nm">
+                                <h4><span class="label label-warning">Rate of Interest [ROI] is <strong><span class=''
                                                 id="roi_value">10.2</span></strong>
-                                                </span>
-                                            </h4>
-                                            <form class="form-horizontal input-styling">
-                                                <div class="form-group">
-                                                    <label class="control-label col-md-3 col-xl-12 col-sm-12" for="email">Loan
+                                    </span>
+                                </h4>
+                                <form class="form-horizontal input-styling">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-xl-12 col-sm-12" for="email">Loan
                                             Tenture:</label>
-                                                    <div class="col-sm-6">
-                                                        <input type="number" class="form-control" style="    border-radius: 10px !important;" />
-                                                    </div>
-                                                </div>
-                                            </form>
-                                            <input type="text" data-slider="true" value="10.2" data-slider-range="8,16" data-slider-step=".05" data-slider-snap="true" id="roi">
-                                            <br>
+                                        <div class="col-sm-6">
+                                            <input type="number" class="form-control" style="    border-radius: 10px !important;" />
+                                        </div>
+                                    </div>
+                                </form>
+                                <input type="text" data-slider="true" value="10.2" data-slider-range="8,16"
+                                    data-slider-step=".05" data-slider-snap="true" id="roi">
+                                <br>
 
-                                            <div class="labeling personal-label">
-                                                <p>Monthly EMI</p>
-                                                <p id='emi'>00,000</p>
-                                                <p>Principal Amount <span class="labe-radius home-label-upper"></span></p>
-                                                <p id='tbl_int'>00,000</p>
-                                                <p>Interst Amount <span class="labe-radius home-label-lower"></span></p>
-                                                <p id='tbl_full'>00,000</p>
-                                                <p>Total Amount Payable</p>
-                                                <p id='tbl_int_pge'>00,000</p>
-                                            </div>
-                                            <div class="chart" id="container">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 youtube-video">
-                                        <div class="common-width">
-                                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/PIh2xe4jnpk"></iframe>
-                                        </div>
-                                        <div class="img-adword common-width img-thumbnail">
-                                            <img src="images/img_5terre.jpg" alt="demo">
-                                        </div>
-                                        <div class="loan-bazar-text common-width">
-                                            <h4>Loan bazaar Features</h4>
-                                            <h4>Loan bazaar APP</h4>
-                                            <h4>Loan bazaar APP</h4>
-                                            <h4>Loan bazaar APP</h4>
-                                        </div>
-                                    </div>
-                                    <div class="box-body table-responsive " id='datatable'>
-                                        <table id='illustrate' class='table table-striped table-bordered' width=100%>
-                                        </table>
-                                    </div>
-                                    <div class="footer"></div>
+                                <div class="labeling personal-label">
+                                    <p>Monthly EMI</p>
+                                    <p id='emi'>00,000</p>
+                                    <p>Principal Amount <span class="labe-radius home-label-upper"></span></p>
+                                    <p id='tbl_int'>00,000</p>
+                                    <p>Interst Amount <span class="labe-radius home-label-lower"></span></p>
+                                    <p id='tbl_full'>00,000</p>
+                                    <p>Total Amount Payable</p>
+                                    <p id='tbl_int_pge'>00,000</p>
                                 </div>
-                        </section>
-                        <!-- /.content -->
-                    </aside>
-                    <!-- /.right-side -->
+                                <div class="chart" id="container">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 youtube-video">
+                            <div class="common-width">
+                                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/PIh2xe4jnpk"></iframe>
+                            </div>
+                            <div class="img-adword common-width ">
+                                <img src="images/img_5terre.jpg" alt="demo">
+                            </div>
+                            <div class="loan-bazar-text common-width">
+                                <h4>Loan bazaar Features</h4>
+                                <h4>Loan bazaar APP</h4>
+                                <h4>Loan bazaar APP</h4>
+                                <h4>Loan bazaar APP</h4>
+                            </div>
+                        </div>
+                        <div class="box-body table-responsive " id='datatable'>
+                            <table id='illustrate' class='table table-striped table-bordered' width=100%>
+                            </table>
+                        </div>
+                        <div class="footer"></div>
                     </div>
-                    <!-- ./wrapper -->
+            </section>
+            <!-- /.content -->
+        </aside>
+        <!-- /.right-side -->
+    </div>
+    <!-- ./wrapper -->
 </body>
 <!-- Bootstrap -->
 <script src="js/bootstrap.min.js" type="text/javascript"></script>
-<script src="js/navigation.js" type="text/javascript"></script>
 <script type="text/javascript">
-$(document).ready(function(){
-	let split1=$(location).attr('href').split("/").reverse()[0];
-	let split2=split1.split("#")[0];
-	switch(split2){
-	case "index.html":
-	 $("#home").addClass("homeactive");
-	break;
-		case "personal.html":
-	 $("#personal").addClass("personalactive");
-	break;
-		case "car.html":
-	 $("#car").addClass("carctive");
-	break;
-		case "commercial.html":
-	 $("#commercial").addClass("commercialctive");
-	break;
-	}
-         
-})
+    $(document).ready(function () {
+        let split1 = $(location).attr('href').split("/").reverse()[0];
+        let split2 = split1.split("#")[0];
+        switch (split2) {
+            case "index.html":
+                $("#home").addClass("homeactive");
+                break;
+            case "personal.html":
+                $("#personal").addClass("personalactive");
+                break;
+            case "car.html":
+                $("#car").addClass("carctive");
+                break;
+            case "commercial.html":
+                $("#commercial").addClass("commercialactive");
+                break;
+        }
+
+    })
 </script>
-
-
 </html>
