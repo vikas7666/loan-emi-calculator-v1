@@ -1,2 +1,2 @@
-demo-fianance.000webhostapp.com</br>
-This Is basically for loan purpose website created as per requirements .
+## This website created for client as per requirement.
+### In this website mainly focus on loans emi calcular. User can check his loan such as personal loan, car loan etc.
